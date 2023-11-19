@@ -1,0 +1,13 @@
+NO sprites/brick128.xpm
+SO sprites/whbrick128.xpm
+WE sprites/door128.xpm
+EA sprites/interior128.xpm
+
+F 128,0,32
+C 135,206,235
+
+		1111111
+		111S001
+		1111001
+		1111111
+
