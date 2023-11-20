@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:30:13 by novsiann          #+#    #+#             */
-/*   Updated: 2023/11/19 17:30:14 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/11/20 18:57:56 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,13 @@ void	init_map_data(t_game *game, char *path)
 	matrix_free(file_content);
 }
 
+int key_press(int key, t_game *game)
+{
+	if (key == 53)
+		game->key_esc = 1;
+	return (0);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_game	*game;
@@ -94,6 +101,8 @@ int	main(int argc, char *argv[])
 	if (!init_textures(game))
 		throw_error(game, "Memory allocation!");
 	mlx_loop_hook(game->mlx, draw, game);
+	mlx_hook(game->win, KEYPRESS, 1L << 0, &key_press, game);
+	mlx_hook(game->win, 17, 1L << 17, &close_game, game);
 	mlx_loop(game->mlx);
 	return (0);
 }

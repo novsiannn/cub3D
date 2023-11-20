@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:13:54 by ibellash          #+#    #+#             */
-/*   Updated: 2023/11/19 13:29:09 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/11/20 18:31:44 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ void			calc_side_dist(t_game *game);
 void			calc_side_dist_y(t_game *game);
 void			init_wall_casting(t_game *game, int i); 
 int				keys(int keycode, t_game *game);
-int				key_hook(t_game *d);
+int				keys_execute(t_game *game);
 int				key_release(int key, t_game *d);
 int				key_press(int key, t_game *d);
 void			key_up(t_game *game);
