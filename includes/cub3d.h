@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:13:54 by ibellash          #+#    #+#             */
-/*   Updated: 2023/11/20 18:31:44 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:43:28 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ int				check_if_nums(char *num);
 char			**get_map(char **file_content);
 void			fill_with_ones(t_game *game);
 int				is_empty_line(char *line);
+void			init_wall_drawing(t_game *game, int i);
 
 int				create_trgb(int t, int r, int g, int b);
 int				get_t(int trgb);
@@ -167,12 +168,11 @@ int				get_r(int trgb);
 int				get_g(int trgb);
 int				get_b(int trgb);
 
-int				init_textures(t_game *g);
-int				draw(t_game *game);
+void			calc_side_dist(t_game *game);
 void			calc_hit(t_game *game);
 void			check_side(t_game *game);
-void			calc_side_dist(t_game *game);
-void			calc_side_dist_y(t_game *game);
+int				draw(t_game *game);
+int				init_textures(t_game *g);
 void			init_wall_casting(t_game *game, int i); 
 int				keys(int keycode, t_game *game);
 int				keys_execute(t_game *game);

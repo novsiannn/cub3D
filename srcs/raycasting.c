@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:03:32 by dsas              #+#    #+#             */
-/*   Updated: 2023/11/21 18:55:02 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:40:58 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,6 @@ void	floor_ceiling_drawing(t_game *game)
 	}
 }
 
-void	init_wall_drawing(t_game *game, int i)
-{
-	t_raycast *rays;
-
-	rays = game->rays;
-	rays->camera_x = 2 * i / (double)game->screen_height - 1;
-	rays->ray_dir_x = rays->dir_x + rays->plane_x * rays->camera_x;
-	rays->ray_dir_y = rays->dir_y + rays->plane_y * rays->camera_x;
-	rays->map_x = (int)rays->pos_x;
-	rays->map_y = (int)rays->pos_y;
-	rays->delta_dist_x = fabs(1 / rays->ray_dir_x);
-	rays->delta_dist_y = fabs(1 / rays->ray_dir_y);
-	rays->hit = 0;
-}
-
 void	walls_drawing(t_game *game)
 {
 	int	i;
@@ -56,7 +41,28 @@ void	walls_drawing(t_game *game)
 	while (i < game->screen_width)
 	{
 		init_wall_drawing(game, i);
+		calc_side_dist(game);
+		calc_hit(game);
 		i++;
+	}
+}
+
+void	check_side(t_game *game)
+{
+	t_raycast *rays;
+
+	rays = game->rays;
+	if (rays->side == 0)
+	{
+		if (rays->map_x > rays->pos_x)
+			rays->side = 2; 
+		rays->perp_wall_dist = rays->side_dist_x - rays->delta_dist_x;
+	}
+	else
+	{
+		if (rays->map_y > rays->pos_y)
+			rays->side = 3;
+		rays->perp_wall_dist = rays->side_dist_y - rays->delta_dist_y;
 	}
 }
 
