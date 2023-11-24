@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:03:32 by dsas              #+#    #+#             */
-/*   Updated: 2023/11/23 18:40:58 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/11/24 18:39:15 by nikitos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,27 @@ void	floor_ceiling_drawing(t_game *game)
 	}
 }
 
+void	calc_draw(t_game *game)
+{
+	t_raycast	*r;
+
+	r = game->rays;
+	r->line_height = (int)(game->screen_height / r->perp_wall_dist);
+	r->draw_start = -r->line_height / 2 + game->screen_height / 2;
+	if (r->draw_start < 0)
+		r->draw_start = 0;
+	r->draw_end = r->line_height / 2 + game->screen_height / 2;
+	if (r->draw_end >= game->screen_height)
+		r->draw_end = game->screen_height - 1;
+	r->texnum = game->map[r->map_y][r->map_x] - 48;
+	if (r->side % 2 == 0)
+		r->wallx = r->pos_y + r->perp_wall_dist * r->ray_dir_y;
+	else
+		r->wallx = r->pos_x + r->perp_wall_dist * r->ray_dir_x;
+	r->wallx -= floor(r->wallx);
+	r->texx =(int)(r->wallx * (double)game->tex_width);
+}
+
 void	walls_drawing(t_game *game)
 {
 	int	i;
@@ -43,6 +64,7 @@ void	walls_drawing(t_game *game)
 		init_wall_drawing(game, i);
 		calc_side_dist(game);
 		calc_hit(game);
+		calc_draw(game);
 		i++;
 	}
 }
