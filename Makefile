@@ -6,7 +6,7 @@
 #    By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/19 13:35:40 by novsiann          #+#    #+#              #
-#    Updated: 2023/11/19 13:38:41 by novsiann         ###   ########.fr        #
+#    Updated: 2023/11/25 14:46:53 by novsiann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS = main.c \
        raycasting2.c \
        keys.c \
        keys2.c \
-       move.c
+       rotate.c
 
 NAME = cub3d
 

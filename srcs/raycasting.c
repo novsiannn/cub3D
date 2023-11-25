@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nikitos <nikitos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:03:32 by dsas              #+#    #+#             */
-/*   Updated: 2023/11/24 18:39:15 by nikitos          ###   ########.fr       */
+/*   Updated: 2023/11/25 15:13:28 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,32 @@ void	calc_draw(t_game *game)
 	r->texx =(int)(r->wallx * (double)game->tex_width);
 }
 
+void	draw_walls(t_game *game, int i)
+{
+	int			j;
+	t_raycast	*r;
+
+	r = game->rays;
+	if (r->side % 2 == 0 && r->ray_dir_x > 0)
+		r->texx = game->tex_width - r->texx - 1;
+	if (r->side % 2 == 1 && r->ray_dir_y < 0)
+		r->texx =game->tex_width - r->texx - 1;
+	r->step = 1.0 * game->tex_height / r->line_height;
+	r->texpos = (r->draw_start - game->screen_height / 2 + \
+								r->line_height / 2) * r->step;
+
+	j = r->draw_start;
+	while (j < r->draw_end)
+	{
+		r->texy = (int)r->texpos & (game->tex_height - 1);
+		r->texpos += r->step;
+		r->colr = game->texture[r->texnum + r->side - 1] \
+		[game->tex_height * r->texy + r->texx];
+		my_mlx_pixel_put(game, i, j, r->colr);
+		j++;
+	}
+}
+
 void	walls_drawing(t_game *game)
 {
 	int	i;
@@ -65,6 +91,7 @@ void	walls_drawing(t_game *game)
 		calc_side_dist(game);
 		calc_hit(game);
 		calc_draw(game);
+		draw_walls(game, i);
 		i++;
 	}
 }
