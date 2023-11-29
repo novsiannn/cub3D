@@ -6,7 +6,7 @@
 /*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:30:13 by novsiann          #+#    #+#             */
-/*   Updated: 2023/11/29 14:57:22 by novsiann         ###   ########.fr       */
+/*   Updated: 2023/11/29 18:14:46 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int	main(int argc, char *argv[])
 	init_facing_direction(game);
 	if (!init_textures(game))
 		throw_error(game, "Memory allocation!");
+	rotate(1, game, 0.02);
 	mlx_loop_hook(game->mlx, draw, game);
 	mlx_hook(game->win, KEYPRESS, 1L << 0, &key_press, game);
 	mlx_hook(game->win, KEYRELEASE, 1L << 1, &key_release, game);

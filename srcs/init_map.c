@@ -40,7 +40,7 @@ int	add_path_vars(t_game *game, t_image *image, char *path)
 {
 	if ((*image).xpm_ptr != NULL)
 		return (1);
-	*image = read_xmp_image(game->mlx, path);//check
+	*image = read_xmp_image(game->mlx, path);
 	if ((*image).xpm_ptr == NULL)
 		return (1);
 	return (0);

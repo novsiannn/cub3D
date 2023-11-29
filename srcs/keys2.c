@@ -12,18 +12,20 @@
 
 #include "../includes/cub3d.h"
 
-void key_up(t_game *game)
+void	key_up(t_game *game)
 {
 	t_raycast	*rays;
 
 	rays = game->rays;
-	if (game->map[(int)rays->pos_y][(int)(rays->pos_x + rays->dir_x * game->movespeed)] == '0')
+	if (game->map[(int)rays->pos_y] \
+		[(int)(rays->pos_x + rays->dir_x * game->movespeed)] == '0')
 		rays->pos_x += rays->dir_x * game->movespeed;
-	if (game->map[(int)(rays->pos_y + rays->dir_y * game->movespeed)][(int)rays->pos_x] == '0')
+	if (game->map[(int)(rays->pos_y + rays->dir_y * game->movespeed)] \
+		[(int)rays->pos_x] == '0')
 		rays->pos_y += rays->dir_y * game->movespeed;
 }
 
-void key_down(t_game *game)
+void	key_down(t_game *game)
 {
 	t_raycast	*rays;
 

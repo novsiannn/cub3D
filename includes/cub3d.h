@@ -161,6 +161,8 @@ char			**get_map(char **file_content);
 void			fill_with_ones(t_game *game);
 int				is_empty_line(char *line);
 void			init_wall_drawing(t_game *game, int i);
+void			floor_ceiling_drawing(t_game *game);
+void			walls_drawing(t_game *game);
 
 int				create_trgb(int t, int r, int g, int b);
 int				get_t(int trgb);
@@ -173,7 +175,7 @@ void			calc_hit(t_game *game);
 void			check_side(t_game *game);
 int				draw(t_game *game);
 int				init_textures(t_game *g);
-void			init_wall_casting(t_game *game, int i); 
+void			init_wall_casting(t_game *game, int i);
 int				keys(int keycode, t_game *game);
 int				keys_execute(t_game *game);
 int				key_release(int key, t_game *d);

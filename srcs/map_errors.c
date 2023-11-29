@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_errors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikhristi <ikhristi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:59:53 by ikhristi          #+#    #+#             */
-/*   Updated: 2023/11/29 13:08:54 by ikhristi         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:03:34 by novsiann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	check_components(t_game *game, char **map, int i)
 				else
 				{
 					game->player_direction = map[i][j];
-					game->rays->pos_x = j;
-					game->rays->pos_y = i;
+					game->rays->pos_x = j + 0.1;
+					game->rays->pos_y = i + 0.1;
 					map[i][j] = '0';
 				}
 			}

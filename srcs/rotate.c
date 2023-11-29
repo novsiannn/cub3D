@@ -12,8 +12,8 @@
 
 #include "../includes/cub3d.h"
 
-void	rotate_plus(t_game *d, double rotspeed,\
-double old_dir_x, double	old_plane_x)
+void	rotate_plus(t_game *d, double rotspeed, \
+	double old_dir_x, double old_plane_x)
 {
 	d->rays->dir_x = d->rays->dir_x
 		* cos(-rotspeed) - d->rays->dir_y * sin(-rotspeed);

@@ -14,22 +14,22 @@
 
 void	floor_ceiling_drawing(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = -1;
 	while (game->screen_height / 2 > ++y)
 	{
 		x = -1;
 		while (game->screen_width > ++x)
-			my_mlx_pixel_put(game, x , y, game->ceiling_color);
+			my_mlx_pixel_put(game, x, y, game->ceiling_color);
 	}
 	y--;
 	while (game->screen_height > ++y)
 	{
 		x = -1;
 		while (game->screen_width > ++x)
-			my_mlx_pixel_put(game, x , y, game->floor_color);
+			my_mlx_pixel_put(game, x, y, game->floor_color);
 	}
 }
 
@@ -51,7 +51,7 @@ void	calc_draw(t_game *game)
 	else
 		r->wallx = r->pos_x + r->perp_wall_dist * r->ray_dir_x;
 	r->wallx -= floor(r->wallx);
-	r->texx =(int)(r->wallx * (double)game->tex_width);
+	r->texx = (int)(r->wallx * (double)game->tex_width);
 }
 
 void	draw_walls(t_game *game, int i)
@@ -63,11 +63,10 @@ void	draw_walls(t_game *game, int i)
 	if (r->side % 2 == 0 && r->ray_dir_x > 0)
 		r->texx = game->tex_width - r->texx - 1;
 	if (r->side % 2 == 1 && r->ray_dir_y < 0)
-		r->texx =game->tex_width - r->texx - 1;
+		r->texx = game->tex_width - r->texx - 1;
 	r->step = 1.0 * game->tex_height / r->line_height;
 	r->texpos = (r->draw_start - game->screen_height / 2 + \
 								r->line_height / 2) * r->step;
-
 	j = r->draw_start;
 	while (j < r->draw_end)
 	{
@@ -98,13 +97,13 @@ void	walls_drawing(t_game *game)
 
 void	check_side(t_game *game)
 {
-	t_raycast *rays;
+	t_raycast	*rays;
 
 	rays = game->rays;
 	if (rays->side == 0)
 	{
 		if (rays->map_x > rays->pos_x)
-			rays->side = 2; 
+			rays->side = 2;
 		rays->perp_wall_dist = rays->side_dist_x - rays->delta_dist_x;
 	}
 	else
@@ -113,21 +112,4 @@ void	check_side(t_game *game)
 			rays->side = 3;
 		rays->perp_wall_dist = rays->side_dist_y - rays->delta_dist_y;
 	}
-}
-
-int draw(t_game *game)
-{
-	t_raycast *rays;
-
-	game->rays->time = ft_get_ticks();
-	rays = game->rays;
-	if (rays->img)
-		mlx_destroy_image(game->mlx, rays->img);
-	rays->img = mlx_new_image(game->mlx, game->screen_width, game->screen_height);
-	rays->img_addr = mlx_get_data_addr(rays->img, &rays->bits_per_pixel, &rays->line_length, &rays->endian);
-	floor_ceiling_drawing(game);
-	walls_drawing(game);
-	keys_execute(game);
-	mlx_put_image_to_window(game->mlx, game->win, rays->img, 0, 0);
-	return 1;
 }

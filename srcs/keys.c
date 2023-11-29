@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-int key_press(int key, t_game *game)
+int	key_press(int key, t_game *game)
 {
 	if (key == 53)
 		game->key_esc = 1;
@@ -50,9 +50,9 @@ int	key_release(int key, t_game *game)
 	return (0);
 }
 
-int keys_execute(t_game *game)
+int	keys_execute(t_game *game)
 {
-	if(game->key_esc)
+	if (game->key_esc)
 		close_game(game);
 	if (game->key_w)
 		key_up(game);
