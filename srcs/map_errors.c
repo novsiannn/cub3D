@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_errors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibellash <ibellash@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: ikhristi <ikhristi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 15:33:09 by ibellash          #+#    #+#             */
-/*   Updated: 2023/08/01 14:47:13 by ibellash         ###   ########.fr       */
+/*   Created: 2023/11/27 17:59:53 by ikhristi          #+#    #+#             */
+/*   Updated: 2023/11/29 13:08:54 by ikhristi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

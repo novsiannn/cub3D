@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibellash <ibellash@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: ikhristi <ikhristi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/30 19:39:58 by ibellash          #+#    #+#             */
-/*   Updated: 2023/08/03 17:55:41 by ibellash         ###   ########.fr       */
+/*   Created: 2023/11/19 19:05:56 by ikhristi          #+#    #+#             */
+/*   Updated: 2023/11/29 13:07:50 by ikhristi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	add_path_vars(t_game *game, t_image *image, char *path)
 {
 	if ((*image).xpm_ptr != NULL)
 		return (1);
-	*image = read_xmp_image(game->mlx, path);
+	*image = read_xmp_image(game->mlx, path);//check
 	if ((*image).xpm_ptr == NULL)
 		return (1);
 	return (0);

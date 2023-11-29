@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibellash <ibellash@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: ikhristi <ikhristi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/27 19:04:28 by ibellash          #+#    #+#             */
-/*   Updated: 2023/07/31 15:59:06 by ibellash         ###   ########.fr       */
+/*   Created: 2023/11/19 16:03:32 by ikhristi          #+#    #+#             */
+/*   Updated: 2023/11/29 13:12:03 by ikhristi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,26 +74,26 @@ char	**read_map(t_game *game, char *map)
 {
 	char	**res;
 	int		fd;
-	char	*s;
+	char	*str;
 	int		i;
 
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
 		throw_error(game, FILE_ERROR);
 	res = ft_calloc(sizeof(char *), count_lines(fd) + 1);
+	close(fd);
 	if (!res)
 		return (NULL);
-	close(fd);
 	fd = open(map, O_RDONLY);
-	s = get_next_line(fd);
+	str = get_next_line(fd);
 	i = 0;
-	while (s)
+	while (str)
 	{
-		res[i] = s;
-		s = get_next_line(fd);
+		res[i] = str;
+		str = get_next_line(fd);
 		i++;
 	}
-	res[i] = 0;
+	res[i] = NULL;
 	close(fd);
 	return (res);
 }

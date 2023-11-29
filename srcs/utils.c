@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: novsiann <novsiann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikhristi <ikhristi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/28 17:36:54 by ibellash          #+#    #+#             */
-/*   Updated: 2023/11/19 17:09:27 by novsiann         ###   ########.fr       */
+/*   Created: 2023/11/19 17:46:51 by ikhristi          #+#    #+#             */
+/*   Updated: 2023/11/27 17:27:10 by ikhristi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,4 @@ void	matrix_free(char **str)
 		i++;
 	}
 	free(str);
-}
-
-unsigned int	ft_get_ticks(void)
-{
-	struct timespec	now;
-
-	clock_gettime(CLOCK_MONOTONIC, &now);
-	return ((now.tv_sec * 1000) + (now.tv_nsec / 1000000));
 }
