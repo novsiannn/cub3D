@@ -6,7 +6,7 @@
 /*   By: ikhristi <ikhristi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 19:05:56 by ikhristi          #+#    #+#             */
-/*   Updated: 2023/11/29 13:07:50 by ikhristi         ###   ########.fr       */
+/*   Updated: 2023/11/29 19:28:52 by ikhristi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	init_map(t_game *game, char **file_content)
 	map_check_errors(game, file_content);
 	fill_with_ones(game);
 	i = -1;
-	if (!check_components(game, game->map, i))
+	if (!check_components(game, game->map, i) || game->player_direction == 0)
 	{
 		matrix_free(file_content);
 		throw_error(game, MAP_COMPONENTS_ERROR);
